@@ -1,0 +1,28 @@
+<!-- res/values/colors.xml -->
+<resources>
+    <!-- Light theme colors -->
+    <color name="primary_light">#4A90E2</color> <!-- Your light blue -->
+    <color name="primary_variant_light">#357ABD</color>
+    <color name="background_light">#FFFFFF</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="on_surface_light">#212121</color>
+    <color name="on_background_light">#212121</color>
+    <color name="outline_light">#BDBDBD</color>
+
+    <!-- Aging colors (light) -->
+    <color name="aging_yellow_light">#FFF9C4</color>
+    <color name="aging_orange_light">#FFE0B2</color>
+    <color name="aging_red_light">#FFCCCC</color>
+
+    <!-- Dark theme colors -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="on_surface_dark">#E0E0E0</color>
+    <color name="on_background_dark">#E0E0E0</color>
+    <color name="outline_dark">#616161</color>
+
+    <!-- Aging colors (dark) -->
+    <color name="aging_yellow_dark">#4A421A</color>
+    <color name="aging_orange_dark">#4A3A1A</color>
+    <color name="aging_red_dark">#4A2A2A</color>
+</resources>

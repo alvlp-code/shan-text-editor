@@ -1,0 +1,23 @@
+<!-- res/values/themes.xml -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.Shin" parent="Theme.Material3.DayNight">
+        <!-- Primary color (your light blue) -->
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_variant_light</item>
+
+        <!-- Background & surface -->
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/on_surface_light</item>
+        <item name="colorOnBackground">@color/on_background_light</item>
+        <item name="colorOutline">@color/outline_light</item>
+
+        <!-- Buttons -->
+        <item name="colorSecondary">@color/primary_light</item>
+
+        <item name="colorAgingYellow">@color/aging_yellow_light</item>
+        <item name="colorAgingOrange">@color/aging_orange_light</item>
+        <item name="colorAgingRed">@color/aging_red_light</item>
+    </style>
+</resources>

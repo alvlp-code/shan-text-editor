@@ -1,0 +1,6 @@
+<!-- res/values/attrs.xml -->
+<resources>
+    <attr name="colorAgingYellow" format="color" />
+    <attr name="colorAgingOrange" format="color" />
+    <attr name="colorAgingRed" format="color" />
+</resources>
