@@ -1,75 +1,94 @@
-<!-- res/layout/activity_main.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?android:attr/windowBackground">
+    android:background="#1e1e1e">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:clipToPadding="false" />
-
-    <!-- Input area with themed background -->
+    <!-- Top Toolbar (Fixed Height) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="8dp"
-        android:background="?attr/colorSurface"
-        android:elevation="6dp">
+        android:background="#252526"
+        android:clickable="true"
+        android:focusable="true">
 
-    <EditText
-        android:id="@+id/edit_text_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:hint="Task title"
-        android:textSize="18sp"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:imeOptions="actionNext"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textColorHint="?android:attr/textColorSecondary" />
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Edit"
+            android:backgroundTint="#0e639c"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <EditText
-        android:id="@+id/edit_text_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:hint="Description"
-        android:textSize="15sp"
-        android:inputType="textMultiLine"
-        android:minLines="1"
-        android:maxLines="3"
-        android:minHeight="48dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:gravity="top"
-        android:imeOptions="actionDone"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textColorHint="?android:attr/textColorSecondary" />
+        <Button
+            android:id="@+id/btnPreview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Preview"
+            android:backgroundTint="#3c3c3c"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <Button
-        android:id="@+id/button_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="EXECUTE"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:minHeight="48dp"
-        android:textColor="@android:color/white"
-        app:backgroundTint="?attr/colorSecondary" />
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save"
+            android:backgroundTint="#3c3c3c"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-</LinearLayout>
-
+        <Button
+            android:id="@+id/btnOpen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Open"
+            android:backgroundTint="#3c3c3c"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="4dp"
+            android:clickable="true"
+            android:focusable="true"/>
     </LinearLayout>
+
+    <!-- Code Editor (Edit Mode) - Uses Weight for Proper Sizing -->
+    <io.github.rosemoe.sora.widget.CodeEditor
+        android:id="@+id/codeEditor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Markdown Preview (Preview Mode) - Uses Weight for Proper Sizing -->
+    <ScrollView
+        android:id="@+id/previewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:background="#1e1e1e"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/markdownPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#d4d4d4"
+            android:textSize="16sp"/>
+    </ScrollView>
+</LinearLayout>

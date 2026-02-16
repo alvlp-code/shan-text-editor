@@ -1,6 +1,6 @@
 <!-- res/values-night/themes.xml -->
 <resources>
-    <style name="Theme.Shin" parent="Theme.Material3.DayNight">
+    <style name="Theme.Shan" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/primary_light</item> <!-- Keep accent same in dark mode -->
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorPrimaryContainer">@color/primary_variant_light</item>

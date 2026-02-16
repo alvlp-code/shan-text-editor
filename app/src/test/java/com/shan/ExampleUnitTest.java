@@ -1,4 +1,4 @@
-package com.shin;
+package com.shan;
 
 import org.junit.Test;
 
