@@ -1,10 +1,13 @@
 package com.shan;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +15,8 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
     private CodeEditor codeEditor;
     private TextView markdownPreview;
     private ScrollView previewContainer;
-    private Button btnEdit, btnPreview, btnSave, btnOpen;
+    private TabLayout tabLayout;
+    private Button btnSave;
+    private ImageButton btnMenu;
     private Markwon markwon;
-    private boolean isPreviewMode = false;
     private Uri currentFileUri;
 
     private final ActivityResultLauncher<String> saveFileLauncher = registerForActivityResult(
@@ -66,44 +72,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize ALL Views (including Edit & Preview buttons)
+        // Initialize Views
         codeEditor = findViewById(R.id.codeEditor);
         markdownPreview = findViewById(R.id.markdownPreview);
         previewContainer = findViewById(R.id.previewContainer);
-        btnEdit = findViewById(R.id.btnEdit);
-        btnPreview = findViewById(R.id.btnPreview);
+        tabLayout = findViewById(R.id.tabLayout);
         btnSave = findViewById(R.id.btnSave);
-        btnOpen = findViewById(R.id.btnOpen);
+        btnMenu = findViewById(R.id.btnMenu);
 
         // Initialize Markwon
         markwon = Markwon.create(this);
 
+        // Setup TextMate & Editor
         setupTextMate();
         setupEditor();
 
-        // Edit Button Click Listener
-        btnEdit.setOnClickListener(v -> {
-            isPreviewMode = false;
-            codeEditor.setVisibility(View.VISIBLE);
-            previewContainer.setVisibility(View.GONE);
-            btnEdit.setBackgroundColor(0xFF0e639c);
-            btnPreview.setBackgroundColor(0xFF3c3c3c);
-        });
+        // Setup Tabs
+        setupTabs();
 
-        // Preview Button Click Listener
-        btnPreview.setOnClickListener(v -> {
-            isPreviewMode = true;
-            codeEditor.setVisibility(View.GONE);
-            previewContainer.setVisibility(View.VISIBLE);
-            btnEdit.setBackgroundColor(0xFF3c3c3c);
-            btnPreview.setBackgroundColor(0xFF0e639c);
-
-            // Render Markdown
-            String markdown = codeEditor.getText().toString();
-            markwon.setMarkdown(markdownPreview, markdown);
-        });
-
-        // Save Button Click Listener
+        // Save Button
         btnSave.setOnClickListener(v -> {
             if (currentFileUri != null) {
                 saveContentToFile(currentFileUri);
@@ -112,8 +99,101 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Open Button Click Listener
-        btnOpen.setOnClickListener(v -> openFileLauncher.launch(new String[]{"*/*"}));
+        // 3-Dot Menu Button
+        btnMenu.setOnClickListener(v -> showPopupMenu(v));
+    }
+
+    private void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.getMenuInflater().inflate(R.menu.menu_toolbar, popup.getMenu());
+
+        // Hide the "Save" item from popup (we have a dedicated button)
+        popup.getMenu().findItem(R.id.menu_save).setVisible(false);
+
+        popup.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.menu_open_file) {
+                openFileLauncher.launch(new String[]{"*/*"});
+                return true;
+            } else if (id == R.id.menu_save_file) {
+                if (currentFileUri != null) {
+                    saveContentToFile(currentFileUri);
+                } else {
+                    saveFileLauncher.launch("file.md");
+                }
+                return true;
+            } else if (id == R.id.menu_file_info) {
+                showFileInfo();
+                return true;
+            } else if (id == R.id.menu_close) {
+                showCloseDialog();
+                return true;
+            }
+            return false;
+        });
+
+        popup.show();
+    }
+
+    private void showFileInfo() {
+        String content = codeEditor.getText().toString();
+        int lines = content.split("\n").length;
+        int chars = content.length();
+        String fileName = currentFileUri != null ?
+                currentFileUri.getLastPathSegment() : "Unsaved";
+
+        new AlertDialog.Builder(this)
+                .setTitle("File Info")
+                .setMessage("Name: " + fileName +
+                        "\n\nLines: " + lines +
+                        "\nCharacters: " + chars)
+                .setPositiveButton("OK", null)
+                .show();
+    }
+
+    private void showCloseDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Close File")
+                .setMessage("Do you want to save before closing?")
+                .setPositiveButton("Save", (dialog, which) -> {
+                    if (currentFileUri != null) {
+                        saveContentToFile(currentFileUri);
+                    } else {
+                        saveFileLauncher.launch("file.md");
+                    }
+                    finish();
+                })
+                .setNegativeButton("Don't Save", (dialog, which) -> {
+                    finish();
+                })
+                .setNeutralButton("Cancel", null)
+                .show();
+    }
+
+    private void setupTabs() {
+        tabLayout.addTab(tabLayout.newTab().setText("Code"));
+        tabLayout.addTab(tabLayout.newTab().setText("Preview"));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    codeEditor.setVisibility(View.VISIBLE);
+                    previewContainer.setVisibility(View.GONE);
+                } else {
+                    codeEditor.setVisibility(View.GONE);
+                    previewContainer.setVisibility(View.VISIBLE);
+                    String markdown = codeEditor.getText().toString();
+                    markwon.setMarkdown(markdownPreview, markdown);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
     }
 
     private void setupTextMate() {
@@ -121,10 +201,8 @@ public class MainActivity extends AppCompatActivity {
             FileProviderRegistry.getInstance().addFileProvider(
                     new AssetsFileResolver(getAssets())
             );
-
             ThemeRegistry.getInstance().setTheme("default");
             GrammarRegistry.getInstance().loadGrammars("textmate/languages.json");
-
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "TextMate Setup Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -135,10 +213,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             TextMateColorScheme colorScheme = TextMateColorScheme.create(ThemeRegistry.getInstance());
             codeEditor.setColorScheme(colorScheme);
-
             TextMateLanguage language = TextMateLanguage.create("text.html.markdown", true);
             codeEditor.setEditorLanguage(language);
-
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Language Setup Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -149,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         codeEditor.setPinLineNumber(true);
         codeEditor.setCursorBlinkPeriod(500);
 
-        codeEditor.setText("# Markdown Editor\n\nThis is **bold** and this is *italic*.\n\n```java\npublic class Test {}\n```\n");
+        codeEditor.setText("# Markdown Editor\n\nThis is **bold** and this is *italic*.\n\n## Features\n- Syntax Highlighting\n- Tab Preview\n- File Menu\n\n```java\npublic class Test {\n    public static void main(String[] args) {\n        System.out.println(\"Hello\");\n    }\n}\n```\n");
     }
 
     private void saveContentToFile(Uri uri) {
@@ -181,7 +257,8 @@ public class MainActivity extends AppCompatActivity {
             reader.close();
             codeEditor.setText(content.toString());
 
-            if (isPreviewMode) {
+            // Update preview if in preview mode
+            if (tabLayout.getSelectedTabPosition() == 1) {
                 markwon.setMarkdown(markdownPreview, content.toString());
             }
 

@@ -1,94 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#1e1e1e">
 
-    <!-- Top Toolbar (Fixed Height) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp"
+        android:padding="12dp"
         android:background="#252526"
-        android:clickable="true"
-        android:focusable="true">
-
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit"
-            android:backgroundTint="#0e639c"
-            android:textColor="#FFFFFF"
-            android:layout_marginEnd="4dp"
-            android:clickable="true"
-            android:focusable="true"/>
-
-        <Button
-            android:id="@+id/btnPreview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Preview"
-            android:backgroundTint="#3c3c3c"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:clickable="true"
-            android:focusable="true"/>
-
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Save"
-            android:backgroundTint="#3c3c3c"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:clickable="true"
-            android:focusable="true"/>
-
-        <Button
-            android:id="@+id/btnOpen"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Open"
-            android:backgroundTint="#3c3c3c"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="4dp"
-            android:clickable="true"
-            android:focusable="true"/>
-    </LinearLayout>
-
-    <!-- Code Editor (Edit Mode) - Uses Weight for Proper Sizing -->
-    <io.github.rosemoe.sora.widget.CodeEditor
-        android:id="@+id/codeEditor"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <!-- Markdown Preview (Preview Mode) - Uses Weight for Proper Sizing -->
-    <ScrollView
-        android:id="@+id/previewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:visibility="gone"
-        android:padding="16dp"
-        android:background="#1e1e1e"
-        android:fillViewport="true">
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/markdownPreview"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Markdown Editor"
             android:textColor="#d4d4d4"
-            android:textSize="16sp"/>
-    </ScrollView>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:backgroundTint="#0e639c"
+            android:textColor="#FFFFFF"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- 3-Dot Menu Button -->
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_more_vert"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="More Options"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Tab Layout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#252526"
+        app:tabTextColor="#888888"
+        app:tabSelectedTextColor="#FFFFFF"
+        app:tabIndicatorColor="#0e639c"
+        app:tabMode="fixed"
+        app:tabGravity="fill"/>
+
+    <!-- Content Container -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <io.github.rosemoe.sora.widget.CodeEditor
+            android:id="@+id/codeEditor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ScrollView
+            android:id="@+id/previewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:padding="16dp"
+            android:background="#1e1e1e"
+            android:fillViewport="true">
+
+            <TextView
+                android:id="@+id/markdownPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#d4d4d4"
+                android:textSize="16sp"/>
+        </ScrollView>
+    </FrameLayout>
 </LinearLayout>
