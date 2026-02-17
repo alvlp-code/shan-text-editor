@@ -1,0 +1,93 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.shan.texteditor" >
+4
+5    <uses-sdk android:minSdkVersion="24" />
+6
+7    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+7-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:4:5-80
+7-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:4:22-77
+8    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+8-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:5:5-81
+8-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:5:22-78
+9    <!-- For Android 11+ -->
+10    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+10-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:7:5-82
+10-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:7:22-79
+11
+12    <application>
+12-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:9:5-44:19
+13
+14        <!-- File Viewer/Editor Activity -->
+15        <activity
+15-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:12:9-42:20
+16            android:name="com.shan.texteditor.TextEditorActivity"
+16-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:13:13-47
+17            android:exported="true"
+17-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:14:13-36
+18            android:label="Shan Text Editor"
+18-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:16:13-45
+19            android:theme="@style/Theme.AppCompat.NoActionBar" >
+19-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:15:13-63
+20
+21            <!-- ONE INTENT FILTER TO RULE THEM ALL -->
+22            <intent-filter android:priority="0" >
+22-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:19:13-33:29
+22-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:19:28-48
+23                <action android:name="android.intent.action.VIEW" />
+23-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:20:17-69
+23-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:20:25-66
+24                <action android:name="android.intent.action.EDIT" />
+24-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:21:17-69
+24-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:21:25-66
+25
+26                <category android:name="android.intent.category.DEFAULT" />
+26-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:17-76
+26-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:27-73
+27                <category android:name="android.intent.category.BROWSABLE" />
+27-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:23:17-78
+27-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:23:27-75
+28
+29                <!-- Support ALL files from ANY source -->
+30                <data android:scheme="file" />
+30-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+30-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:23-44
+31                <data android:scheme="content" />
+31-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+31-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:23-44
+32                <data android:scheme="http" />
+32-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+32-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:23-44
+33                <data android:scheme="https" />
+33-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+33-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:23-44
+34                <data android:mimeType="*/*" />
+34-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+34-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:30:23-45
+35                <data android:host="*" />
+35-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+35-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:31:23-39
+36                <data android:pathPattern=".*\\.*" />
+36-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+36-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:32:23-51
+37            </intent-filter>
+38
+39            <!-- Share intent filter -->
+40            <intent-filter>
+40-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:36:13-40:29
+41                <action android:name="android.intent.action.SEND" />
+41-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:37:17-69
+41-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:37:25-66
+42
+43                <category android:name="android.intent.category.DEFAULT" />
+43-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:17-76
+43-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:27-73
+44
+45                <data android:mimeType="*/*" />
+45-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+45-->/home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:30:23-45
+46            </intent-filter>
+47        </activity>
+48    </application>
+49
+50</manifest>

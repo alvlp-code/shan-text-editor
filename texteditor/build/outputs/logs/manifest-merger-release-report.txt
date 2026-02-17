@@ -1,0 +1,76 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:2:1-46:12
+	package
+		INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:4:5-80
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:4:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:7:5-82
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:7:22-79
+application
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:9:5-44:19
+activity#com.shan.texteditor.TextEditorActivity
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:12:9-42:20
+	android:label
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:16:13-45
+	android:exported
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:14:13-36
+	android:theme
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:15:13-63
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:13:13-47
+intent-filter#action:name:android.intent.action.EDIT+action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:*+data:mimeType:*/*+data:pathPattern:.*\\.*+data:scheme:content+data:scheme:file+data:scheme:http+data:scheme:https
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:19:13-33:29
+	android:priority
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:19:28-48
+action#android.intent.action.VIEW
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:20:25-66
+action#android.intent.action.EDIT
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.DEFAULT
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:17-76
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:22:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:23:17-78
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:23:27-75
+data
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:17-47
+	android:host
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:31:23-39
+	android:scheme
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:26:23-44
+	android:pathPattern
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:32:23-51
+	android:mimeType
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:30:23-45
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:*/*
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:36:13-40:29
+action#android.intent.action.SEND
+ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:37:17-69
+	android:name
+		ADDED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml:37:25-66
+uses-sdk
+INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml
+INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/alvlp/AndroidStudioProjects/Shan/texteditor/src/main/AndroidManifest.xml

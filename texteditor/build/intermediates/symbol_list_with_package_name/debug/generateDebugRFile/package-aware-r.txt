@@ -1,0 +1,16 @@
+com.shan.texteditor
+drawable ic_more_vert
+id btnMenu
+id btnSave
+id codeEditor
+id markdownPreview
+id menu_close
+id menu_file_info
+id menu_open_file
+id menu_overflow
+id menu_save
+id menu_save_file
+id previewContainer
+id tabLayout
+layout activity_text_editor
+menu menu_toolbar

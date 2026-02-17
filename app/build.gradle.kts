@@ -1,13 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
     ndkVersion = "27.1.12297006"
     namespace = "com.shan"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.shan"
@@ -42,22 +41,21 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
-    val editorVersion = "0.24.4"
-    implementation("io.github.rosemoe:editor:$editorVersion")
-    implementation("io.github.rosemoe:language-textmate:$editorVersion")
+    implementation(project(":texteditor"))
+
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.room:room-runtime:2.5.0")
+    implementation(libs.core.ktx)
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 
-    implementation("io.noties.markwon:core:4.6.2")
-    implementation("io.noties.markwon:ext-strikethrough:4.6.2")
-    implementation("io.noties.markwon:ext-tables:4.6.2")
-    implementation("io.noties.markwon:ext-tasklist:4.6.2")
-
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
